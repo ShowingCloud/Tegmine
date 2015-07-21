@@ -1,46 +1,171 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+
+        <link rel="stylesheet" type="text/css" href="css/af.ui.base.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <script type="text/javascript" charset="utf-8" src="js/jquery-2.1.1.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/af.ui.jquery.min.js"></script>
+        <title>LockDemo</title>
+    <script type="text/javascript">
+        //$.ui.showBackButton = false;
+		$.ui.autoLaunch=false;
+		$.ui.animateHeaders = false;
+        $.ui.backButtonText = "Back";
+        $.ui.availableTransitions['default'] = $.ui.availableTransitions['none'];
+        $.touchLayer($("#afui").get(0));
+    </script>
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div id="afui" >
+            <div id="content" >
+				<div class="panel" id='welcome' data-header="none" data-footer="none" style='background-image:url(images/welcome1.jpg);background-size:100%;'>
+					<img id='welcome2' src='images/welcome2.jpg' style='display:none;width:100%'>
+					<input onclick="$.ui.loadContent('login',false,false,false)" id='loginin' value='登录使用'></input>
+				</div>
+				<div class="panel" id='login' data-header="none" data-footer="none" style='background-image:url(images/welcome2.jpg);background-size:100%;'>
+					<div id='login2'>
+						<input class="login" autofocus="autofocus" placeholder='请输入物流点编号' style='margin-top:10px'/>
+						<input class="login" autofocus="autofocus" placeholder='请输入邀请码' />
+						<input id='yaoqing' type='button' value='获取邀请'/>
+						<input id='denglu' onclick="$.ui.loadContent('main',false,false,false)" type='button' value='马上登陆'/>
+					</div>
+				</div>
+				<div class="panel" id='main' style='background-image:url(images/background.jpg);background-size:100%;'>
+					<header>
+						<img class='logo' src='images/logo.png'>
+						<h1>选择物流公司</h1>
+						<span class='bh'>SHU-A001<span>
+					</header>
+					<div id='kuaidi'>
+						<ul>
+						    <li><a><img src='images/zto.png'></a></li>
+							<li><a><img src='images/yunda.png'></li>
+							<li><a><img src='images/YTO.png'></li>
+							<li><a><img src='images/STO.png'></li>
+							<li><a><img src='images/SF.png'></li>
+						</ul>
+					</div>
+					</br></br></br>
+					<footer>
+					    <span onclick="$.ui.goBack()" class='goback'>上一步</span>
+						<span onclick="$.ui.loadContent('main2',false,false,false)" class='next'>下一步</span>>
+					</footer>
+				</div>
+				<div class="panel" id='main2' style='background-image:url(images/background.jpg);background-size:100%;'>
+					<header>
+						<img class='logo' src='images/logo.png'>
+						<h1>手机号扫录与编号生成</h1>
+						<span class='bh'>SHU-A001<span>
+					</header>
+					<div class='div1'>
+						<input id='shoudong' type='button' value='手动输入'/>
+						<input id='ocr' type='button' value='OCR录入'/>
+						<div>
+							<img class='scan' src='images/scan pic.jpg'>
+						</div>
+					</div>
+					<div class='phone'>
+						<div class='div2'>
+							<span style='margin-left:12%'>手机号</span>
+							<span style='margin-left:23%'>取货编号</span>
+						</div>
+						<ul class='number'>
+							<li>11232321312　　　　001</li>
+							<li>1</li>
+							<li>1</li>
+							<li>1</li>
+						</ul>
+					</div>
+					</br></br></br>
+					<footer>
+					    <span onclick="$.ui.goBack()" class='goback'>上一步</span>
+						<span onclick="$.ui.loadContent('tongzhi',false,false,false)" class='next'>下一步</span>>
+					</footer>
+				</div>
+				<div class="panel" id='tongzhi' style='background-image:url(images/background.jpg);background-size:100%;'>
+					<header>
+						<img class='logo' src='images/logo.png'>
+						<h1>通知推送</h1>
+						<span class='bh'>SHU-A001<span>
+					</header>
+					<div class='div3'>
+						亲爱的<span class='span1'>陆鹏</span>您好！您有快递到了，请速凭取货码<span class='span1'>001</span>到上海大学花儿小站领取（浴室对面）。快递联系电话<span class='span1'>13120482518</span>.
+						下载<span class='span1'>到了吗</span>APP，各大物流网点进度随时查，快递收货消息免费获取！
+						http://zk96v3.axshare.com/#c=2
+					</div>
+					<div class='phone'>
+						<div class='div2'>
+							<span style='margin-left:12%'>手机号</span>
+							<span style='margin-left:23%'>取货编号</span>
+						</div>
+						<ul class='number'>
+							<li>11232321312　　　　001</li>
+							<li>1</li>
+							<li>1</li>
+							<li>1</li>
+						</ul>
+					</div>
+					<input id='duanxin' type='button' value='短信发送'/>
+					<input id='app' type='button' value='APP发送'/>
+					</br></br></br>
+					<footer>
+					    <span onclick="$.ui.goBack()" class='goback'>上一步</span>
+						<span onclick="$.ui.loadContent('shibai',false,false,false)" class='next'>下一步</span>>
+					</footer>
+				</div>
+				<div class="panel" id='shibai' style='background-image:url(images/background.jpg);background-size:100%;'>
+					<header>
+						<img class='logo' src='images/logo.png'>
+						<h1>推送和反馈</h1>
+						<span class='bh'>SHU-A001<span>
+					</header>
+					<div class='div4'>
+						<img class='worry' src='images/worry.png'>
+						<div class='div5'>
+							发送成功<span class='span1'>65</span>个，发送失败<span class='span2'>6</span>个！
+						</div>
+					</div>
+					<div class='phonefail'>
+						<div class='div2'>
+							<span style='margin-left:12%'>手机号</span>
+							<span style='margin-left:23%'>取货编号</span>
+						</div>
+						<ul class='numberfail'>
+							<li>11232321312　　　　001</li>
+							<li>1</li>
+							<li>1</li>
+							<li>1</li>
+						</ul>
+					</div>
+					<input id='bufa' type='button' value='补发以上'/>
+					</br></br></br>
+					<footer>
+					    <span onclick="$.ui.goBack()" class='goback'>上一步</span>
+						<span onclick="$.ui.loadContent('wanchen',false,false,false)" class='next'>下一步</span>>
+					</footer>
+				</div>
+				<div class="panel" id='wanchen' style='background-image:url(images/background.jpg);background-size:100%;'>
+					<header>
+						<img class='logo' src='images/logo.png'>
+						<h1>通知完成</h1>
+						<span class='bh'>SHU-A001<span>
+					</header>
+					<div class='div6'>
+						<div class='div5'>
+							发送成功<span class='span1'>6</span>个，发送失败<span class='span2'>0</span>个！
+						</div>
+					</div>
+					<footer>
+						<span onclick="$.ui.goBack()" class='goback'>上一步</span>
+						<span onclick="$.ui.loadContent('main',false,false,false)" class='next'>完成</span>>
+					</footer>
+				</div>
             </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
     </body>
 </html>
