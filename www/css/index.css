@@ -1,7 +1,7 @@
 #afui .panel{padding:0}
 #afui .header h1{
   height:53px;
-  padding: 14px 0;
+  padding: 18px 0;
 }
 #afui .header{
   height:53px;
@@ -13,7 +13,6 @@
   font-size: 36px;  
 }
 #afui .footer{
-  height:54px;
   border-bottom:none;
   background:black;
   color:#ccc;
@@ -22,7 +21,7 @@
   font-size: 27px;  
   border-top:none;
 }
-#loginin{
+.loginin{
   width: 42%;
   position: absolute;
   margin-top: -92%;
@@ -31,7 +30,19 @@
   background: orangered;
   border: none;
   color: white;
-  height: 6%;
+  font-size: 25px;
+  font-family: Microsoft YaHei;
+  display: none;
+}
+.loginin1{
+  width: 42%;
+  position: absolute;
+  margin-top: -64%;
+  margin-left: 30%;
+  text-align: center;
+  background: orangered;
+  border: none;
+  color: white;
   font-size: 25px;
   font-family: Microsoft YaHei;
   display: none;
@@ -66,6 +77,10 @@
   float: left;
   margin-left: 7%;
   color:#9A9A9A;
+  text-align: center; 
+  -webkit-appearance : none ;   
+  background: white;
+  border: 1px solid #ccc;  
 }
 #shoudong{
   height: 40px;
@@ -73,18 +88,30 @@
   float: left;
   margin-left: 7%;
   color:#9A9A9A;
+  text-align: center;
+  -webkit-appearance : none ; 
+  background: white;
+  border: 1px solid #ccc;  
 }
 #denglu{
   height: 40px;
   width: 37%;
   margin-left: 6%;
   color: orangered;
+  text-align: center;  
+  -webkit-appearance : none ; 
+  background: white;
+  border: 1px solid #ccc;
 }
 #ocr{
   height: 40px;
   width: 37%;
   margin-left: 13%;
   color: #9A9A9A;
+  text-align: center;
+  -webkit-appearance : none ; 
+  background: white;
+  border: 1px solid #ccc;
 }
 .logo{
   height: 40px;
@@ -96,7 +123,7 @@
   float: right;
   font-size: 12px;
   color: orangered;
-  margin-top: 19px;
+  margin-top: 25px;
   margin-right: 18px;
 }
 #kuaidi{
@@ -186,6 +213,7 @@
   margin-top: 5%;
   margin-left: 10%;
   height: 40px;
+  -webkit-appearance : none ; 
 }
 #app{
   width: 25%;
@@ -197,6 +225,7 @@
   margin-top: 5%;
   margin-left: 29%;
   height: 40px;
+  -webkit-appearance : none ; 
 }
 .div4{
   text-align:center;
@@ -248,6 +277,7 @@
   margin-top: 5%;
   height: 40px;
   margin-left: 22%;
+  -webkit-appearance : none ; 
 }
 .div6{
   text-align:center;

@@ -10,27 +10,48 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" charset="utf-8" src="js/jquery-2.1.1.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/af.ui.jquery.min.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
         <title>LockDemo</title>
-    <script type="text/javascript">
+	<script type="text/javascript">
         //$.ui.showBackButton = false;
-		$.ui.autoLaunch=false;
 		$.ui.animateHeaders = false;
-        $.ui.backButtonText = "Back";
         $.ui.availableTransitions['default'] = $.ui.availableTransitions['none'];
-        $.touchLayer($("#afui").get(0));
     </script>
+   <script>
+		$(document).ready(function(){
+			 $("#shoudong").click(function(){
+				$("#shoudong").css("color","black");
+				$("#ocr").css("color","#9A9A9A");
+			  });
+			  $("#ocr").click(function(){
+				$("#shoudong").css("color","#9A9A9A");
+				$("#ocr").css("color","black");
+			  });
+		  });
+		function shuru(){
+			  $("#afui").popup( {
+				   title:" ",
+				   message:"<input type='tel' id='phoneToShare' maxlength='11' placeholder='输入手机号' style='width:100%;height:2.4em;font-size:1em;color:black;' />",
+				   cancelText:"取消",
+				   cancelCallback: function(){},
+				   doneText:"确定",
+				   doneCallback: function(){},
+				   cancelOnly:false
+			 });
+		 };
+	</script>
     </head>
     <body>
         <div id="afui" >
             <div id="content" >
-				<div class="panel" id='welcome' data-header="none" data-footer="none" style='background-image:url(images/welcome1.jpg);background-size:100%;'>
+				<div class="panel" id='welcome' data-header="none" data-footer="none" style='background-image:url(images/welcome1.jpg);background-size:100%;overflow:hidden'>
 					<img id='welcome2' src='images/welcome2.jpg' style='display:none;width:100%'>
-					<input onclick="$.ui.loadContent('login',false,false,false)" id='loginin' value='登录使用'></input>
+					<input onclick="$.ui.loadContent('login',false,false,false)" id='loginin' class='loginin' value='登录使用'></input>
 				</div>
 				<div class="panel" id='login' data-header="none" data-footer="none" style='background-image:url(images/welcome2.jpg);background-size:100%;'>
 					<div id='login2'>
 						<input class="login" autofocus="autofocus" placeholder='请输入物流点编号' style='margin-top:10px'/>
-						<input class="login" autofocus="autofocus" placeholder='请输入邀请码' />
+						<input class="login"  placeholder='请输入邀请码' />
 						<input id='yaoqing' type='button' value='获取邀请'/>
 						<input id='denglu' onclick="$.ui.loadContent('main',false,false,false)" type='button' value='马上登陆'/>
 					</div>
@@ -53,7 +74,7 @@
 					</br></br></br>
 					<footer>
 					    <span onclick="$.ui.goBack()" class='goback'>上一步</span>
-						<span onclick="$.ui.loadContent('main2',false,false,false)" class='next'>下一步</span>>
+						<span onclick="$.ui.loadContent('main2',false,false,false)" class='next'>下一步</span>
 					</footer>
 				</div>
 				<div class="panel" id='main2' style='background-image:url(images/background.jpg);background-size:100%;'>
@@ -63,7 +84,7 @@
 						<span class='bh'>SHU-A001<span>
 					</header>
 					<div class='div1'>
-						<input id='shoudong' type='button' value='手动输入'/>
+						<input onclick="shuru()" id='shoudong' type='button' value='手动输入'/>
 						<input id='ocr' type='button' value='OCR录入'/>
 						<div>
 							<img class='scan' src='images/scan pic.jpg'>
@@ -84,7 +105,7 @@
 					</br></br></br>
 					<footer>
 					    <span onclick="$.ui.goBack()" class='goback'>上一步</span>
-						<span onclick="$.ui.loadContent('tongzhi',false,false,false)" class='next'>下一步</span>>
+						<span onclick="$.ui.loadContent('tongzhi',false,false,false)" class='next'>下一步</span>
 					</footer>
 				</div>
 				<div class="panel" id='tongzhi' style='background-image:url(images/background.jpg);background-size:100%;'>
@@ -115,7 +136,7 @@
 					</br></br></br>
 					<footer>
 					    <span onclick="$.ui.goBack()" class='goback'>上一步</span>
-						<span onclick="$.ui.loadContent('shibai',false,false,false)" class='next'>下一步</span>>
+						<span onclick="$.ui.loadContent('shibai',false,false,false)" class='next'>下一步</span>
 					</footer>
 				</div>
 				<div class="panel" id='shibai' style='background-image:url(images/background.jpg);background-size:100%;'>
@@ -146,7 +167,7 @@
 					</br></br></br>
 					<footer>
 					    <span onclick="$.ui.goBack()" class='goback'>上一步</span>
-						<span onclick="$.ui.loadContent('wanchen',false,false,false)" class='next'>下一步</span>>
+						<span onclick="$.ui.loadContent('wanchen',false,false,false)" class='next'>下一步</span>
 					</footer>
 				</div>
 				<div class="panel" id='wanchen' style='background-image:url(images/background.jpg);background-size:100%;'>
@@ -162,10 +183,29 @@
 					</div>
 					<footer>
 						<span onclick="$.ui.goBack()" class='goback'>上一步</span>
-						<span onclick="$.ui.loadContent('main',false,false,false)" class='next'>完成</span>>
+						<span onclick="$.ui.loadContent('main',false,false,false)" class='next'>完成</span>
 					</footer>
 				</div>
             </div>
-        <script type="text/javascript" src="js/index.js"></script>
+			<script>
+				var Sys = {}; 
+				var ua = navigator.userAgent.toLowerCase(); 
+				var s; 
+				(s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] : 
+				(s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] : 
+				(s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] : 
+				(s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0; 
+		 
+				if (Sys.ie) {}else{
+					if (Sys.firefox) {}else{
+						if (Sys.chrome) {}else{
+						if (Sys.safari) 
+						$("#loginin").removeClass("loginin");$("#loginin").addClass("loginin1");
+
+						}
+					}
+				}
+			</script>
     </body>
 </html>
+
